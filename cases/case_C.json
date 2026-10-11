@@ -1,0 +1,18 @@
+{
+  "id": "case_C",
+  "nl_input": "Policy A: block all transfers above $10K. Policy B: KYC-verified customers can transfer any amount. Alice is KYC-verified. Transfer $15,000.",
+  "facts": {
+    "alice_kyc": true,
+    "amount": 15000
+  },
+  "policy": {
+    "review_threshold": 10000,
+    "kyc_unrestricted": true,
+    "prohibitions": []
+  },
+  "expected": {
+    "z3": "UNSAT",
+    "cvc5": "UNSAT",
+    "decision": "CONTRADICTION"
+  }
+}
