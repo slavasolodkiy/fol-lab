@@ -1,0 +1,20 @@
+{
+  "id": "case_A",
+  "nl_input": "Alice is KYC verified. Bob is not sanctioned. Transfer $8,000. Policy: transfers over $10,000 require review.",
+  "facts": {
+    "alice_kyc": true,
+    "bob_sanctioned": false,
+    "amount": 8000
+  },
+  "policy": {
+    "review_threshold": 10000,
+    "prohibitions": [
+      "bob_sanctioned"
+    ]
+  },
+  "expected": {
+    "z3": "SAT",
+    "cvc5": "SAT",
+    "decision": "ALLOW"
+  }
+}
