@@ -1,0 +1,34 @@
+{
+  "case_type": "person_onboarding",
+  "subject": "person-demo",
+  "as_of": "2026-10-27T12:00:00Z",
+  "evidence": [
+    {
+      "id": "person-identity",
+      "subject": "person-demo",
+      "fact": "identity_verified",
+      "value": true,
+      "source": "synthetic demonstration record",
+      "observed_at": "2026-10-01T00:00:00Z",
+      "expires_at": "2026-11-01T00:00:00Z"
+    },
+    {
+      "id": "person-screen",
+      "subject": "person-demo",
+      "fact": "screening_clear",
+      "value": true,
+      "source": "synthetic demonstration record",
+      "observed_at": "2026-10-01T00:00:00Z",
+      "expires_at": "2026-11-01T00:00:00Z"
+    },
+    {
+      "id": "person-policy",
+      "subject": "person-demo",
+      "fact": "policy_hard_stop",
+      "value": false,
+      "source": "synthetic demonstration record",
+      "observed_at": "2026-10-01T00:00:00Z",
+      "expires_at": "2026-11-01T00:00:00Z"
+    }
+  ]
+}
