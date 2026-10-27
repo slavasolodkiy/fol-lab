@@ -1,0 +1,250 @@
+{
+  "schema_version": "cal-transaction-gate-0.2",
+  "as_of": "2026-10-27T12:00:00+00:00",
+  "transaction_id": "tx-demo-001",
+  "policy": {
+    "id": "DEMO-TX-EVIDENCE",
+    "version": "2",
+    "source_ref": "fictional-policy-design-not-law",
+    "interpretation_status": "fictional",
+    "control_owner": "synthetic_compliance_owner"
+  },
+  "hashes": {
+    "case": "3d785634aaac27b30d62da7a67ad8f76f82c58d99f557053f3f2c5ff5ab53cff",
+    "policy_bundle": "4fd4df522e7ea1587f02473addde920c6a6d93ef97744fbca3130f0e762f03b5",
+    "selected_policy": "d117172fa603ef273c37a7ce42441a57942ec662aaeabfdc395b4342edd2c87f"
+  },
+  "snapshots": {
+    "case": {
+      "as_of": "2026-10-27T12:00:00Z",
+      "context": {
+        "regulated_entity": "DemoBank",
+        "jurisdiction": "DEMO-UK",
+        "product": "business_payments"
+      },
+      "transaction": {
+        "id": "tx-demo-001",
+        "customer": "customer-demo",
+        "amount": "1250.00",
+        "currency": "GBP",
+        "beneficiary": "supplier-demo",
+        "purpose": "invoice_payment"
+      },
+      "evidence": [
+        {
+          "id": "ev-customer_verified",
+          "fact": "customer_verified",
+          "value": true,
+          "source": "synthetic-reviewed-evidence",
+          "binding": {
+            "id": "tx-demo-001",
+            "customer": "customer-demo",
+            "amount": "1250.00",
+            "currency": "GBP",
+            "beneficiary": "supplier-demo",
+            "purpose": "invoice_payment"
+          },
+          "observed_at": "2026-09-01T00:00:00Z",
+          "expires_at": "2027-01-01T00:00:00Z"
+        },
+        {
+          "id": "ev-purpose_supported",
+          "fact": "purpose_supported",
+          "value": true,
+          "source": "synthetic-reviewed-evidence",
+          "binding": {
+            "id": "tx-demo-001",
+            "customer": "customer-demo",
+            "amount": "1250.00",
+            "currency": "GBP",
+            "beneficiary": "supplier-demo",
+            "purpose": "invoice_payment"
+          },
+          "observed_at": "2026-09-01T00:00:00Z",
+          "expires_at": "2027-01-01T00:00:00Z"
+        },
+        {
+          "id": "ev-source_of_funds_supported",
+          "fact": "source_of_funds_supported",
+          "value": true,
+          "source": "synthetic-reviewed-evidence",
+          "binding": {
+            "id": "tx-demo-001",
+            "customer": "customer-demo",
+            "amount": "1250.00",
+            "currency": "GBP",
+            "beneficiary": "supplier-demo",
+            "purpose": "invoice_payment"
+          },
+          "observed_at": "2026-09-01T00:00:00Z",
+          "expires_at": "2027-01-01T00:00:00Z"
+        },
+        {
+          "id": "ev-screening_clear",
+          "fact": "screening_clear",
+          "value": true,
+          "source": "synthetic-reviewed-evidence",
+          "binding": {
+            "id": "tx-demo-001",
+            "customer": "customer-demo",
+            "amount": "1250.00",
+            "currency": "GBP",
+            "beneficiary": "supplier-demo",
+            "purpose": "invoice_payment"
+          },
+          "observed_at": "2026-09-01T00:00:00Z",
+          "expires_at": "2027-01-01T00:00:00Z"
+        },
+        {
+          "id": "ev-policy_hard_stop",
+          "fact": "policy_hard_stop",
+          "value": false,
+          "source": "synthetic-reviewed-evidence",
+          "binding": {
+            "id": "tx-demo-001",
+            "customer": "customer-demo",
+            "amount": "1250.00",
+            "currency": "GBP",
+            "beneficiary": "supplier-demo",
+            "purpose": "invoice_payment"
+          },
+          "observed_at": "2026-09-01T00:00:00Z",
+          "expires_at": "2027-01-01T00:00:00Z"
+        }
+      ]
+    },
+    "policies": [
+      {
+        "policy_id": "DEMO-TX-EVIDENCE",
+        "version": "1",
+        "source_ref": "fictional-policy-design-not-law",
+        "interpretation_status": "fictional",
+        "control_owner": "synthetic_compliance_owner",
+        "scope": {
+          "regulated_entity": "DemoBank",
+          "jurisdiction": "DEMO-UK",
+          "product": "business_payments",
+          "purpose": "invoice_payment"
+        },
+        "effective_from": "2026-01-01T00:00:00Z",
+        "effective_to": "2026-10-01T00:00:00Z",
+        "required_facts": [
+          "customer_verified",
+          "source_of_funds_supported",
+          "screening_clear"
+        ],
+        "sources": {
+          "customer_verified": [
+            "synthetic-reviewed-evidence"
+          ],
+          "source_of_funds_supported": [
+            "synthetic-reviewed-evidence"
+          ],
+          "screening_clear": [
+            "synthetic-reviewed-evidence"
+          ],
+          "policy_hard_stop": [
+            "synthetic-reviewed-evidence"
+          ]
+        },
+        "rule_ids": {
+          "deny": "DEMO-TX-v1-DENY",
+          "conflict": "DEMO-TX-v1-CONFLICT",
+          "negative": "DEMO-TX-v1-NEGATIVE",
+          "missing": "DEMO-TX-v1-MISSING",
+          "allow": "DEMO-TX-v1-ALLOW"
+        }
+      },
+      {
+        "policy_id": "DEMO-TX-EVIDENCE",
+        "version": "2",
+        "source_ref": "fictional-policy-design-not-law",
+        "interpretation_status": "fictional",
+        "control_owner": "synthetic_compliance_owner",
+        "scope": {
+          "regulated_entity": "DemoBank",
+          "jurisdiction": "DEMO-UK",
+          "product": "business_payments",
+          "purpose": "invoice_payment"
+        },
+        "effective_from": "2026-10-01T00:00:00Z",
+        "effective_to": "2027-01-01T00:00:00Z",
+        "required_facts": [
+          "customer_verified",
+          "purpose_supported",
+          "source_of_funds_supported",
+          "screening_clear"
+        ],
+        "sources": {
+          "customer_verified": [
+            "synthetic-reviewed-evidence"
+          ],
+          "purpose_supported": [
+            "synthetic-reviewed-evidence"
+          ],
+          "source_of_funds_supported": [
+            "synthetic-reviewed-evidence"
+          ],
+          "screening_clear": [
+            "synthetic-reviewed-evidence"
+          ],
+          "policy_hard_stop": [
+            "synthetic-reviewed-evidence"
+          ]
+        },
+        "rule_ids": {
+          "deny": "DEMO-TX-v2-DENY",
+          "conflict": "DEMO-TX-v2-CONFLICT",
+          "negative": "DEMO-TX-v2-NEGATIVE",
+          "missing": "DEMO-TX-v2-MISSING",
+          "allow": "DEMO-TX-v2-ALLOW"
+        }
+      }
+    ]
+  },
+  "result": {
+    "decision": "allow",
+    "rule_ids": [
+      "DEMO-TX-v2-ALLOW"
+    ],
+    "reasons": [
+      "required_facts_supported_and_hard_stop_explicitly_false"
+    ],
+    "obligations": [],
+    "facts": {
+      "customer_verified": {
+        "state": "true",
+        "evidence_ids": [
+          "ev-customer_verified"
+        ]
+      },
+      "purpose_supported": {
+        "state": "true",
+        "evidence_ids": [
+          "ev-purpose_supported"
+        ]
+      },
+      "source_of_funds_supported": {
+        "state": "true",
+        "evidence_ids": [
+          "ev-source_of_funds_supported"
+        ]
+      },
+      "screening_clear": {
+        "state": "true",
+        "evidence_ids": [
+          "ev-screening_clear"
+        ]
+      },
+      "policy_hard_stop": {
+        "state": "false",
+        "evidence_ids": [
+          "ev-policy_hard_stop"
+        ]
+      }
+    },
+    "excluded_evidence": [],
+    "action_executed": false
+  },
+  "receipt_hash": "8ad9834fe78cedd5a27808f967422ae21a0524edbe02ec1a63e583a238e5156d"
+}

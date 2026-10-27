@@ -1,0 +1,82 @@
+{
+  "as_of": "2026-09-27T12:00:00Z",
+  "context": {
+    "regulated_entity": "DemoBank",
+    "jurisdiction": "DEMO-UK",
+    "product": "business_payments"
+  },
+  "transaction": {
+    "id": "tx-demo-001",
+    "customer": "customer-demo",
+    "amount": "1250.00",
+    "currency": "GBP",
+    "beneficiary": "supplier-demo",
+    "purpose": "invoice_payment"
+  },
+  "evidence": [
+    {
+      "id": "ev-customer_verified",
+      "fact": "customer_verified",
+      "value": true,
+      "source": "synthetic-reviewed-evidence",
+      "binding": {
+        "id": "tx-demo-001",
+        "customer": "customer-demo",
+        "amount": "1250.00",
+        "currency": "GBP",
+        "beneficiary": "supplier-demo",
+        "purpose": "invoice_payment"
+      },
+      "observed_at": "2026-09-01T00:00:00Z",
+      "expires_at": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "ev-source_of_funds_supported",
+      "fact": "source_of_funds_supported",
+      "value": true,
+      "source": "synthetic-reviewed-evidence",
+      "binding": {
+        "id": "tx-demo-001",
+        "customer": "customer-demo",
+        "amount": "1250.00",
+        "currency": "GBP",
+        "beneficiary": "supplier-demo",
+        "purpose": "invoice_payment"
+      },
+      "observed_at": "2026-09-01T00:00:00Z",
+      "expires_at": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "ev-screening_clear",
+      "fact": "screening_clear",
+      "value": true,
+      "source": "synthetic-reviewed-evidence",
+      "binding": {
+        "id": "tx-demo-001",
+        "customer": "customer-demo",
+        "amount": "1250.00",
+        "currency": "GBP",
+        "beneficiary": "supplier-demo",
+        "purpose": "invoice_payment"
+      },
+      "observed_at": "2026-09-01T00:00:00Z",
+      "expires_at": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "ev-policy_hard_stop",
+      "fact": "policy_hard_stop",
+      "value": false,
+      "source": "synthetic-reviewed-evidence",
+      "binding": {
+        "id": "tx-demo-001",
+        "customer": "customer-demo",
+        "amount": "1250.00",
+        "currency": "GBP",
+        "beneficiary": "supplier-demo",
+        "purpose": "invoice_payment"
+      },
+      "observed_at": "2026-09-01T00:00:00Z",
+      "expires_at": "2027-01-01T00:00:00Z"
+    }
+  ]
+}

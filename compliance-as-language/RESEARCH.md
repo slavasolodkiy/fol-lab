@@ -6,7 +6,15 @@ Compliance is often presented either as a checklist of documents or as a decisio
 
 The working hypothesis is deliberately falsifiable in parts: for a defined policy and case, can we represent the relevant facts, evidence status and decision conditions clearly enough that independent reviewers can reproduce the result and identify what is missing? We also ask which parts resist that treatment. A toy implementation can show that a representation is executable; it cannot establish that a policy is lawful, complete, effective, fair, or suitable for a particular institution.
 
-The public prototype in this directory is a **small synthetic experiment**, not a complete compliance language. It evaluates pre-labelled facts for a person, a company or a transaction. It does not read passports, determine beneficial ownership, screen a sanctions list, interpret law, assess source of funds, or perform due diligence.
+The initial v0.1 prototype in this directory is a **small synthetic experiment**, not a complete compliance language. It evaluates pre-labelled facts for a person, a company or a transaction. It does not read passports, determine beneficial ownership, screen a sanctions list, interpret law, assess source of funds, or perform due diligence.
+
+## What the earlier paper already established
+
+This note rests on [*Algorithmic Sovereignty in Digital Banking: From Regulatory Obligations to Runtime Controls*](https://doi.org/10.6084/m9.figshare.33427318), **Vladislav (Slava) Solodkiy, 3 September 2026**. Its full author-supplied PDF has now been read. References here use printed page numbers, one below the PDF page numbers. The paper already argues for partial executable compliance, separates legal interpretation from implementation and proof of operation, and rejects the idea that formal proofs automatically establish lawful conduct. The v0.1 note and evaluator therefore do not constitute a new statement or validation of that thesis.
+
+On **pages 5–7**, the paper describes scoped obligation records, versioned policies, decision-level evidence, separate probabilistic/policy/evidence planes and meaningful human oversight. On **pages 7–9**, it explains the different roles and limits of formal tools and proposes typed normalisation, effective-time policy evaluation, escalation/enforcement and receipts containing input hashes, versions, reasons, actions and overrides. On **pages 12–13**, it identifies typed facts, a tested policy bundle and determining-rule receipts as a useful narrow prototype, with replay, counterexamples, reviewer agreement and controlled changes as acceptance criteria.
+
+A [v0.2 implementation](v2/) moves a selected part of that proposal into code: a typed transaction-evidence gate, policy applicability by declared scope and effective time, a versioned policy bundle, determining rule identifiers and a reconstructable receipt/replay. It passes 24 synthetic tests, including 1,024 bounded evidence-state assignments. This is a narrower contribution than a general compliance language; it does not implement the paper's complete architecture. The synthetic provenance-label allowlist filters fixture claims only. It does not authenticate a source cryptographically, validate a document or prove an assertion's truth. Source reliability, interpretation and approval of rules remain external assertions and institutional responsibilities. The full source paper is not copied into this directory, and this revision makes no new claim about current law. See [the v0.2 specification](v2/FORMAL.md) for its distinct action/task semantics; the simplified three-outcome sketch below describes v0.1.
 
 ## A vocabulary before an answer
 
@@ -41,7 +49,7 @@ These are claims **about evidence**, not an assertion of both `p` and `not p` in
 
 For a required positive claim, `Established(p,E,t) := S+(p,E,t) AND NOT S−(p,E,t)`. Here `NOT S−` means only “no applicable refuting evidence was supplied in this finite set”; it does **not** prove that refuting evidence does not exist in the world. In particular, absent screening evidence does not mean a person is clear, and a potential screening match is not automatically a confirmed prohibition.
 
-For a specific synthetic case `c`, let `Required(c)` be a finite set of positive claims and `H` a separately recorded policy-hard-stop claim. The prototype's fictional decision policy is:
+For a specific synthetic case `c`, let `Required(c)` be a finite set of positive claims and `H` a separately recorded policy-hard-stop claim. The v0.1 prototype's fictional decision policy is:
 
 ```text
 DENY   if H is supported and not refuted in E at t
@@ -52,11 +60,11 @@ REVIEW otherwise
 
 The negative hard-stop evidence means an explicit input that the selected hard stop is absent under this demonstration policy; a missing record is not enough. A conflict over a hard stop goes to review. The evaluator trusts the supplied labels: it does **not** independently verify their source, authority, quality, or legal applicability. Expired and not-yet-observed evidence are excluded at evaluation time; its intervals are `[observed_at, expires_at)`. The code is a deterministic finite evaluator inspired by these ideas, **not a general FOL theorem prover**. A policy result is not an instruction to execute a real payment or a legal opinion.
 
-A richer language could express `Request(evidence_type, case)`, `Review(case, responsible_role)` or `Reassess(case, event)`. These are proposed extensions; the prototype currently emits review reasons and a generic human-action description, not an obligation workflow or a temporal-logic implementation.
+Beyond the v0.1 evaluator, a richer language could express `Request(evidence_type, case)`, `Review(case, responsible_role)` or `Reassess(case, event)`. These are proposed extensions; v0.1 emits review reasons and a generic human-action description, not an obligation workflow or a temporal-logic implementation.
 
 ## Where the language may help — and where it meets its limits
 
-| Area | Possible formal units | What the current prototype actually does / what remains |
+| Area | Possible formal units | What v0.1 actually does / what remains |
 | --- | --- | --- |
 | Identity and KYC | Subject, attribute claim, verification method, evidence provenance, expiry and discrepancy | Accepts a supplied `identity_verified` claim; authenticity, identity matching and suitability of methods remain outside the engine. |
 | KYB and beneficial ownership | Legal entity, ownership/control relationships, scoped claim about verification | Accepts supplied `registration_verified` and `beneficial_owners_verified`; does not calculate ownership, resolve chains, determine applicable thresholds or detect undisclosed control. |
@@ -71,7 +79,7 @@ Formalisation can expose assumptions, contradictions and missing evidence. It do
 
 ## What would count as a stronger result?
 
-The present tests show the behaviour of a small model on synthetic cases, including missing, expired and conflicting evidence and the difference between a review and a confirmed policy hard stop. They test implementation against specified expectations; they do not demonstrate that real cases were assessed correctly or that the rules capture regulatory obligations.
+The v0.1 tests show the behaviour of a small model on synthetic cases, including missing, expired and conflicting evidence and the difference between a review and a confirmed policy hard stop. They test implementation against specified expectations; they do not demonstrate that real cases were assessed correctly or that the rules capture regulatory obligations.
 
 Next validation should compare the representation and its outputs with independently reviewed, appropriately anonymised cases, including difficult exceptions; document policy ownership, source quality and jurisdiction; test changing evidence and policy versions; and measure disagreement, review burden, false assurances and reproducibility. It may reveal that a proposed rule is too coarse or that human review is required at a different point. Such a result would narrow or challenge the hypothesis rather than invalidate the whole idea by itself.
 
@@ -84,6 +92,7 @@ This experiment builds on the author's earlier public work without claiming to r
 - [AI regulation and FOL](https://www.solodkiy.cv/AI-Regulation-FOL.html): the distinction between a proved property and the completeness or legal correctness of the formalisation.
 - [Revolut FOL / sovereign](https://www.revolut.hot/revolut-FOL-sovereign.html): earlier exploration of runtime policy, evidence, escalation and human oversight.
 - [Sovereign Agent Lab](https://www.solodkiy.cv/sovereign-agent-lab.html) and [AuthorityClaw](https://www.solodkiy.cv/authorityclaw.html): related lines of work on evidence and authority; their results should be assessed on their own stated test boundaries.
-- The author also supplied earlier DOI references: [10.6084/m9.figshare.33427318](https://doi.org/10.6084/m9.figshare.33427318), [10.6084/m9.figshare.30296236](https://doi.org/10.6084/m9.figshare.30296236), and [10.6084/m9.figshare.30695645](https://doi.org/10.6084/m9.figshare.30695645). Their full texts were not available for verification during this draft; no detailed claims about their contents are made here.
+- [Algorithmic Sovereignty in Digital Banking: From Regulatory Obligations to Runtime Controls](https://doi.org/10.6084/m9.figshare.33427318), Vladislav (Slava) Solodkiy, 3 September 2026: full author-supplied PDF read; its conceptual and implementation requirements are integrated above. This supersedes the earlier statement that this DOI had not been read.
+- Earlier DOI references [10.6084/m9.figshare.30296236](https://doi.org/10.6084/m9.figshare.30296236) and [10.6084/m9.figshare.30695645](https://doi.org/10.6084/m9.figshare.30695645) preserve the wider research trail. Their full texts remain unverified in this sprint; no detailed claims about their contents are made here.
 
 This sprint does not settle how an AI agent compares with a company as an entity; that question is reserved for a separate investigation.

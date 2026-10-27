@@ -1,0 +1,88 @@
+[
+  {
+    "policy_id": "DEMO-TX-EVIDENCE",
+    "version": "1",
+    "source_ref": "fictional-policy-design-not-law",
+    "interpretation_status": "fictional",
+    "control_owner": "synthetic_compliance_owner",
+    "scope": {
+      "regulated_entity": "DemoBank",
+      "jurisdiction": "DEMO-UK",
+      "product": "business_payments",
+      "purpose": "invoice_payment"
+    },
+    "effective_from": "2026-01-01T00:00:00Z",
+    "effective_to": "2026-10-01T00:00:00Z",
+    "required_facts": [
+      "customer_verified",
+      "source_of_funds_supported",
+      "screening_clear"
+    ],
+    "sources": {
+      "customer_verified": [
+        "synthetic-reviewed-evidence"
+      ],
+      "source_of_funds_supported": [
+        "synthetic-reviewed-evidence"
+      ],
+      "screening_clear": [
+        "synthetic-reviewed-evidence"
+      ],
+      "policy_hard_stop": [
+        "synthetic-reviewed-evidence"
+      ]
+    },
+    "rule_ids": {
+      "deny": "DEMO-TX-v1-DENY",
+      "conflict": "DEMO-TX-v1-CONFLICT",
+      "negative": "DEMO-TX-v1-NEGATIVE",
+      "missing": "DEMO-TX-v1-MISSING",
+      "allow": "DEMO-TX-v1-ALLOW"
+    }
+  },
+  {
+    "policy_id": "DEMO-TX-EVIDENCE",
+    "version": "2",
+    "source_ref": "fictional-policy-design-not-law",
+    "interpretation_status": "fictional",
+    "control_owner": "synthetic_compliance_owner",
+    "scope": {
+      "regulated_entity": "DemoBank",
+      "jurisdiction": "DEMO-UK",
+      "product": "business_payments",
+      "purpose": "invoice_payment"
+    },
+    "effective_from": "2026-10-01T00:00:00Z",
+    "effective_to": "2027-01-01T00:00:00Z",
+    "required_facts": [
+      "customer_verified",
+      "purpose_supported",
+      "source_of_funds_supported",
+      "screening_clear"
+    ],
+    "sources": {
+      "customer_verified": [
+        "synthetic-reviewed-evidence"
+      ],
+      "purpose_supported": [
+        "synthetic-reviewed-evidence"
+      ],
+      "source_of_funds_supported": [
+        "synthetic-reviewed-evidence"
+      ],
+      "screening_clear": [
+        "synthetic-reviewed-evidence"
+      ],
+      "policy_hard_stop": [
+        "synthetic-reviewed-evidence"
+      ]
+    },
+    "rule_ids": {
+      "deny": "DEMO-TX-v2-DENY",
+      "conflict": "DEMO-TX-v2-CONFLICT",
+      "negative": "DEMO-TX-v2-NEGATIVE",
+      "missing": "DEMO-TX-v2-MISSING",
+      "allow": "DEMO-TX-v2-ALLOW"
+    }
+  }
+]
